@@ -56,13 +56,28 @@ public class DetailsPageViewAdapter extends RecyclerView.Adapter<DetailsPageView
     public void onBindViewHolder(@NonNull MyListViewHolder myListViewHolder, int i) {
 
         myListViewHolder.userNameTv.setText("Name: " + userName);
-        myListViewHolder.userCompanyTv.setText("Company: " + userCompany);
-        myListViewHolder.userEmailTv.setText("Email: " + userEmail);
-        myListViewHolder.userRepositoriesTv.setText("Repository: " + userRepository);
+        if(userCompany!="null") {
+            myListViewHolder.userCompanyTv.setText("Company: " + userCompany);
+        }else {
+            myListViewHolder.userCompanyTv.setText("Company: --");
+        }
+        if(userEmail!="null"){
+            myListViewHolder.userEmailTv.setText("Email: " + userEmail);
+        }else {
+            myListViewHolder.userEmailTv.setText("Email: --" );
+        }
+        if(userRepository!="null") {
+            myListViewHolder.userRepositoriesTv.setText("Repository: " + userRepository);
+        }else {
+            myListViewHolder.userRepositoriesTv.setText("Repository: --");
+        }
         myListViewHolder.userFollowingTv.setText("Following: " + userFollowing);
-        myListViewHolder.userLocationTv.setText("Location: " + userLocation);
+        if(userLocation!="null") {
+            myListViewHolder.userLocationTv.setText("Location: " + userLocation);
+        }else {
+            myListViewHolder.userLocationTv.setText("Location: --");
+        }
         myListViewHolder.userFollowersBtn.setText("Followers: "+userFollowers+" (see followers)");
-
         myListViewHolder.userFollowersBtn.setOnClickListener(this);
 
         Glide.with(myListViewHolder.userImg.getContext()).load(userImageUrl).into(myListViewHolder.userImg);
